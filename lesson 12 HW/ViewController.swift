@@ -55,6 +55,13 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    @IBAction func secretButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let controller = storyboard.instantiateViewController(identifier: "SecretViewControllerID")
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
 
 }
 

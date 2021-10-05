@@ -35,6 +35,7 @@ class RoadDriverViewController: UIViewController {
  //       animateRoad()
         configRecognizer()
         configRecognizer2()
+        startPosition()
         
     }
     
@@ -63,30 +64,30 @@ class RoadDriverViewController: UIViewController {
         recognizer.direction = .left
     }
     
+    func startPosition() {
+        containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
+
+        containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: 1 - containerView2.frame.height, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
+    }
+    
         @objc func triggerTimer() {
             counter += 1
             
-            containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
-    
-            containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: -1 * containerView2.frame.origin.y, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
-            
-            UIView.animate(withDuration: 0.01, delay: 0, options: .curveEaseOut) {
-    
-                [self] in
+           
                 
                 containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
-                print("timerTrigger \(counter)")
+
                 
                 containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
-                print("timerTrigger \(counter)")
-    
-            }
-            completion: { [self] isFinished in
-    
-                containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
+            
+            print("timerTrigger \(counter)")
+
+//            completion: { [self] isFinished in
+//
+//                containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
         
-                containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: -1 * containerView2.frame.origin.y, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
-            }
+//                containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: -1 * containerView2.frame.origin.y, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
+//           }
     
         }
     
