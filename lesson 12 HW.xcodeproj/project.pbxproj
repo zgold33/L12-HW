@@ -22,6 +22,7 @@
 		54B2974C270C6BAD006844BD /* car1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B2974B270C6BAD006844BD /* car1.jpg */; };
 		54B2974F270C6C78006844BD /* road.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B2974E270C6C78006844BD /* road.jpg */; };
 		54B29751270C7E01006844BD /* block.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B29750270C7E01006844BD /* block.jpg */; };
+		54B29753270C9E9C006844BD /* RacingCar.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B29752270C9E9C006844BD /* RacingCar.png */; };
 		54C98BA927099BB6006677AB /* squirrel.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C98BA827099BB6006677AB /* squirrel.png */; };
 		54C98BAF2709B2D2006677AB /* mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C98BAE2709B2D2006677AB /* mario.png */; };
 		54C98BB12709B3A6006677AB /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C98BB02709B3A6006677AB /* phone.png */; };
@@ -46,6 +47,7 @@
 		54B2974B270C6BAD006844BD /* car1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car1.jpg; sourceTree = "<group>"; };
 		54B2974E270C6C78006844BD /* road.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = road.jpg; sourceTree = "<group>"; };
 		54B29750270C7E01006844BD /* block.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = block.jpg; sourceTree = "<group>"; };
+		54B29752270C9E9C006844BD /* RacingCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RacingCar.png; sourceTree = "<group>"; };
 		54C98BA827099BB6006677AB /* squirrel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel.png; sourceTree = "<group>"; };
 		54C98BAE2709B2D2006677AB /* mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario.png; sourceTree = "<group>"; };
 		54C98BB02709B3A6006677AB /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				54C98BA827099BB6006677AB /* squirrel.png */,
 				54B2974B270C6BAD006844BD /* car1.jpg */,
 				54B2974E270C6C78006844BD /* road.jpg */,
+				54B29752270C9E9C006844BD /* RacingCar.png */,
 				54C98BAE2709B2D2006677AB /* mario.png */,
 				54C98BB22709B3AE006677AB /* kupidon.png */,
 				54B29750270C7E01006844BD /* block.jpg */,
@@ -169,6 +172,7 @@
 				54C98BAF2709B2D2006677AB /* mario.png in Resources */,
 				543E202327075195004E960D /* whiteCat.png in Resources */,
 				54C98BA927099BB6006677AB /* squirrel.png in Resources */,
+				54B29753270C9E9C006844BD /* RacingCar.png in Resources */,
 				54B2974C270C6BAD006844BD /* car1.jpg in Resources */,
 				54C98BB12709B3A6006677AB /* phone.png in Resources */,
 				543E2013270712CE004E960D /* LaunchScreen.storyboard in Resources */,

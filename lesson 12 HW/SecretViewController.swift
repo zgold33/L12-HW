@@ -15,7 +15,7 @@ enum Direction3 {
 class SecretViewController: UIViewController {
     
     let roadPicture = UIImage(named: "road.jpg")
-    let carPicture = UIImage(named: "car1.jpg")
+    let carPicture = UIImage(named: "RacingCar.png")
     let blockPicture = UIImage(named: "block.jpg")
     
     let car = UIImageView()
