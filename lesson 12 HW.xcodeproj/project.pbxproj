@@ -19,10 +19,11 @@
 		543E2021270715B8004E960D /* SuperCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E2020270715B8004E960D /* SuperCustomButton.swift */; };
 		543E202327075195004E960D /* whiteCat.png in Resources */ = {isa = PBXBuildFile; fileRef = 543E202227075195004E960D /* whiteCat.png */; };
 		54B29749270C6A5A006844BD /* SecretViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B29748270C6A5A006844BD /* SecretViewController.swift */; };
-		54B2974C270C6BAD006844BD /* car1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B2974B270C6BAD006844BD /* car1.jpg */; };
-		54B2974F270C6C78006844BD /* road.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B2974E270C6C78006844BD /* road.jpg */; };
 		54B29751270C7E01006844BD /* block.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B29750270C7E01006844BD /* block.jpg */; };
 		54B29753270C9E9C006844BD /* RacingCar.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B29752270C9E9C006844BD /* RacingCar.png */; };
+		54B29755270CA262006844BD /* Road.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B29754270CA262006844BD /* Road.png */; };
+		54B29757270CA394006844BD /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B29756270CA394006844BD /* Stop.png */; };
+		54B29759270DD1E6006844BD /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B29758270DD1E6006844BD /* GameOverViewController.swift */; };
 		54C98BA927099BB6006677AB /* squirrel.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C98BA827099BB6006677AB /* squirrel.png */; };
 		54C98BAF2709B2D2006677AB /* mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C98BAE2709B2D2006677AB /* mario.png */; };
 		54C98BB12709B3A6006677AB /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 54C98BB02709B3A6006677AB /* phone.png */; };
@@ -44,10 +45,11 @@
 		543E2020270715B8004E960D /* SuperCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperCustomButton.swift; sourceTree = "<group>"; };
 		543E202227075195004E960D /* whiteCat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCat.png; sourceTree = "<group>"; };
 		54B29748270C6A5A006844BD /* SecretViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretViewController.swift; sourceTree = "<group>"; };
-		54B2974B270C6BAD006844BD /* car1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car1.jpg; sourceTree = "<group>"; };
-		54B2974E270C6C78006844BD /* road.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = road.jpg; sourceTree = "<group>"; };
 		54B29750270C7E01006844BD /* block.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = block.jpg; sourceTree = "<group>"; };
 		54B29752270C9E9C006844BD /* RacingCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RacingCar.png; sourceTree = "<group>"; };
+		54B29754270CA262006844BD /* Road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Road.png; sourceTree = "<group>"; };
+		54B29756270CA394006844BD /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
+		54B29758270DD1E6006844BD /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		54C98BA827099BB6006677AB /* squirrel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirrel.png; sourceTree = "<group>"; };
 		54C98BAE2709B2D2006677AB /* mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mario.png; sourceTree = "<group>"; };
 		54C98BB02709B3A6006677AB /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
@@ -86,8 +88,8 @@
 			children = (
 				543E202227075195004E960D /* whiteCat.png */,
 				54C98BA827099BB6006677AB /* squirrel.png */,
-				54B2974B270C6BAD006844BD /* car1.jpg */,
-				54B2974E270C6C78006844BD /* road.jpg */,
+				54B29754270CA262006844BD /* Road.png */,
+				54B29756270CA394006844BD /* Stop.png */,
 				54B29752270C9E9C006844BD /* RacingCar.png */,
 				54C98BAE2709B2D2006677AB /* mario.png */,
 				54C98BB22709B3AE006677AB /* kupidon.png */,
@@ -97,6 +99,7 @@
 				543E2008270712CD004E960D /* SceneDelegate.swift */,
 				543E200A270712CD004E960D /* ViewController.swift */,
 				54B29748270C6A5A006844BD /* SecretViewController.swift */,
+				54B29758270DD1E6006844BD /* GameOverViewController.swift */,
 				543E201A270713E7004E960D /* NonStopCircleViewController.swift */,
 				543E201C2707146F004E960D /* PicturesGalleryViewController.swift */,
 				543E201E270714A5004E960D /* RoadDriverViewController.swift */,
@@ -167,17 +170,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				54C98BB32709B3AE006677AB /* kupidon.png in Resources */,
-				54B2974F270C6C78006844BD /* road.jpg in Resources */,
 				54B29751270C7E01006844BD /* block.jpg in Resources */,
 				54C98BAF2709B2D2006677AB /* mario.png in Resources */,
 				543E202327075195004E960D /* whiteCat.png in Resources */,
 				54C98BA927099BB6006677AB /* squirrel.png in Resources */,
 				54B29753270C9E9C006844BD /* RacingCar.png in Resources */,
-				54B2974C270C6BAD006844BD /* car1.jpg in Resources */,
 				54C98BB12709B3A6006677AB /* phone.png in Resources */,
 				543E2013270712CE004E960D /* LaunchScreen.storyboard in Resources */,
 				543E2010270712CE004E960D /* Assets.xcassets in Resources */,
+				54B29757270CA394006844BD /* Stop.png in Resources */,
 				543E200E270712CD004E960D /* Main.storyboard in Resources */,
+				54B29755270CA262006844BD /* Road.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +199,7 @@
 				543E201B270713E7004E960D /* NonStopCircleViewController.swift in Sources */,
 				543E2009270712CD004E960D /* SceneDelegate.swift in Sources */,
 				543E2021270715B8004E960D /* SuperCustomButton.swift in Sources */,
+				54B29759270DD1E6006844BD /* GameOverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

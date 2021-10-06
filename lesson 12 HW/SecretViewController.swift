@@ -14,13 +14,18 @@ enum Direction3 {
 
 class SecretViewController: UIViewController {
     
-    let roadPicture = UIImage(named: "road.jpg")
-    let carPicture = UIImage(named: "RacingCar.png")
-    let blockPicture = UIImage(named: "block.jpg")
+    
+    @IBOutlet weak var crashLabel: UILabel!
+    
+    
     
     let car = UIImageView()
     let roadPart1 = UIImageView()
     let roadPart2 = UIImageView()
+    
+    let roadPicture = UIImage(named: "Road.png")
+    let carPicture = UIImage(named: "RacingCar.png")
+    let blockPicture = UIImage(named: "Stop.png")
     
     let backgroundPart1 = UIView()
     let backgroundPart2 = UIView()
@@ -40,6 +45,7 @@ class SecretViewController: UIViewController {
         createCar()
         roadMoving()
         placeBlocks()
+        isCrash()
     }
     
     func backgroundsPlace() {
@@ -149,6 +155,12 @@ class SecretViewController: UIViewController {
         }
     }
     
+    func isCrash() {
+        if car.frame.intersects(block1.frame) || car.frame.intersects(block2.frame) || car.frame.intersects(block3.frame) || car.frame.intersects(block4.frame) {
+            crashLabel.isHidden = false
+            crashLabel.text = "OMG OMG"
+    }
     
+    }
     
 }

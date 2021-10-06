@@ -14,42 +14,73 @@ enum Direction2 {
 
 class RoadDriverViewController: UIViewController {
     
-    @IBOutlet weak var carView: UIImageView!
     
-    @IBOutlet weak var containerView1: UIView!
+    @IBOutlet weak var containerView1: UIImageView!
     
-    @IBOutlet weak var containerView2: UIView!
+    @IBOutlet weak var containerView2: UIImageView!
     
-    var timer: Timer?
+    
+    let car = UIImageView()
+    let block1 = UIImageView()
+    let block2 = UIImageView()
+    let block3 = UIImageView()
+    let block4 = UIImageView()
+    
+    let carPicture = UIImage(named: "RacingCar.png")
+    let blockPicture = UIImage(named: "Stop.png")
+    
     var counter: Int = 0
+    var crTimer: Timer?
+    var plTimer: Timer?
     
     override func viewWillAppear(_ animated : Bool) {
         super.viewWillAppear(animated)
         
         title = "Road driver"
         
-                let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(triggerTimer), userInfo: nil, repeats: true)
         
-               self.timer = timer
-        
- //       animateRoad()
+        //       animateRoad()
         configRecognizer()
         configRecognizer2()
         startPosition()
+        createCar()
+        placeBlocks()
+        crashTimer()
         
+    }
+    
+    func createCar() {
+        car.image = carPicture
+        car.frame.size = CGSize(width: 65, height: 130)
+        car.frame.origin = CGPoint(x: view.frame.width / 2 - car.frame.width / 2 - 40, y: view.frame.height - car.frame.height - 120)
+        view.addSubview(car)
+    }
+    
+    func placeBlocks() {
+        block1.image = blockPicture
+        view.addSubview(block1)
+        
+        block2.image = blockPicture
+        view.addSubview(block2)
+        
+        block3.image = blockPicture
+        view.addSubview(block3)
+        
+        block4.image = blockPicture
+        view.addSubview(block4)
     }
     
     func move(direction: Direction2) {
         switch direction {
         
-        case .left:  carView.frame = CGRect(x: carView.frame.origin.x - 100,
-                                            y: carView.frame.origin.y,
-                                            width: carView.frame.width,
-                                            height: carView.frame.height)
-        case .right: carView.frame = CGRect(x: carView.frame.origin.x + 100,
-                                            y: carView.frame.origin.y,
-                                            width: carView.frame.width,
-                                            height: carView.frame.height)
+        case .left:  car.frame = CGRect(x: car.frame.origin.x - 90,
+                                        y: car.frame.origin.y,
+                                        width: car.frame.width,
+                                        height: car.frame.height)
+        case .right: car.frame = CGRect(x: car.frame.origin.x + 90,
+                                        y: car.frame.origin.y,
+                                        width: car.frame.width,
+                                        height: car.frame.height)
         }
     }
     
@@ -66,76 +97,81 @@ class RoadDriverViewController: UIViewController {
     
     func startPosition() {
         containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
-
+        
         containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: 1 - containerView2.frame.height, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
     }
     
-        @objc func triggerTimer() {
-            counter += 1
-            
-           
-                
-                containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
-
-                
-                containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
-            
-            print("timerTrigger \(counter)")
-
-//            completion: { [self] isFinished in
-//
-//                containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
+    func playTimer() {
         
-//                containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: -1 * containerView2.frame.origin.y, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
-//           }
-    
+        if plTimer == nil {
+        plTimer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(triggerTimer), userInfo: nil, repeats: true)
         }
+        
+    }
     
-//    func animateRoad() {
-//        let carImage = carView
-//        let roadImage1 = containerView1
-//        let roadImage2 = containerView2
-//
-//        roadImage1?.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//        roadImage1?.contentMode = .scaleAspectFit
-//
-//        self.view.addSubview(roadImage1!)
-//
-//        roadImage2?.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//        roadImage2?.contentMode = .scaleAspectFit
-//
-//        self.view.addSubview(roadImage2!)
-//
-//        UIView.animate(withDuration: 5.5, delay: 0.0, options: [.repeat, .curveLinear], animations: {
-//
-//            roadImage1?.frame = (roadImage1?.frame.offsetBy(dx: 0.0, dy: (roadImage1?.frame.size.height)!))!
-//            roadImage2?.frame = (roadImage2?.frame.offsetBy(dx: 0.0, dy: (roadImage2?.frame.size.height)!))!
-//        }) {(finished) in
-//            roadImage1?.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//            roadImage1?.contentMode = .scaleAspectFit
-//
-//            roadImage2?.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//            roadImage2?.contentMode = .scaleAspectFit
-//        }
-//
-//    }
+    func crashTimer() {
+        if crTimer == nil {
+            crTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(crashCheck), userInfo: nil, repeats: true)
+        }
+    }
     
-    
+    @objc func triggerTimer() {
+        counter += 1
+        
+        containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
+        
+        containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
+        
+        block1.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 5, width: 70, height: 70)
+        
+        block2.frame = CGRect(x: containerView1.frame.minX + 105, y: containerView1.frame.minY + 250, width: 70, height: 70)
+        
+        block3.frame = CGRect(x: containerView1.frame.minX + 185, y: containerView1.frame.minY - 250, width: 70, height: 70)
+        
+        block4.frame = CGRect(x: containerView1.frame.minX + 265, y: containerView1.frame.minY + 5, width: 70, height: 70)
+        
+        
+        //        print("timerTrigger \(counter)")
+        
+        //            completion: { [self] isFinished in
+        //
+        //                containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
+        
+        //                containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: -1 * containerView2.frame.origin.y, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
+        //           }
+    }
     
     @objc func actionSwipe(_sender: Any) {
         
-        if carView.frame.maxX + 10 < view.frame.width {
+        if car.frame.maxX + 10 < view.frame.width {
             move(direction: .right)
         }
     }
     
     @objc func actionSwipe2(_sender: Any) {
         
-        if carView.frame.minX > 10 {
+        if car.frame.minX > 10 {
             move(direction: .left)
-            
         }
     }
     
+    @objc func crashCheck() {
+        if car.layer.presentation()!.frame.intersects(block1.layer.presentation()!.frame) {
+            print("CRASH!")
+            
+            plTimer?.invalidate()
+            plTimer = nil
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let controller = storyboard.instantiateViewController(identifier: "GameOverViewControllerID") as? GameOverViewController {
+                controller.modalPresentationStyle = .overFullScreen
+                present(controller, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func actionStart(_ sender: Any) {
+        playTimer()
+    }
     
 }
