@@ -277,6 +277,13 @@
                                     <action selector="actionStart:" destination="ydd-dL-048" eventType="touchUpInside" id="KQL-hl-Gqt"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pd-Ps-SX0">
+                                <rect key="frame" x="133" y="20" width="148" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wkg-l8-y1u"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -289,6 +296,7 @@
                     <connections>
                         <outlet property="containerView1" destination="iQG-g9-LEM" id="HzQ-Ba-RDJ"/>
                         <outlet property="containerView2" destination="wWV-cU-CRh" id="GXA-u4-f6W"/>
+                        <outlet property="deathLabel" destination="2pd-Ps-SX0" id="KIN-Jt-UrI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gph-LO-Jnt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

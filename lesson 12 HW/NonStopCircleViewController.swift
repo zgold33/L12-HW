@@ -13,7 +13,6 @@ class NonStopCircleViewController: UIViewController {
     
     @IBOutlet weak var circle: UIView!
     
-    
     var timer: Timer?
     var counter: Int = 0
     

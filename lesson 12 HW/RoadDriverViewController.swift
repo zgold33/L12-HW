@@ -15,6 +15,8 @@ enum Direction2 {
 class RoadDriverViewController: UIViewController {
     
     
+    @IBOutlet weak var deathLabel: UILabel!
+    
     @IBOutlet weak var containerView1: UIImageView!
     
     @IBOutlet weak var containerView2: UIImageView!
@@ -33,13 +35,13 @@ class RoadDriverViewController: UIViewController {
     var crTimer: Timer?
     var plTimer: Timer?
     
+    var lifeCounter = 0
+    
     override func viewWillAppear(_ animated : Bool) {
         super.viewWillAppear(animated)
         
         title = "Road driver"
         
-        
-        //       animateRoad()
         configRecognizer()
         configRecognizer2()
         startPosition()
@@ -104,41 +106,34 @@ class RoadDriverViewController: UIViewController {
     func playTimer() {
         
         if plTimer == nil {
-        plTimer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(triggerTimer), userInfo: nil, repeats: true)
+            plTimer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(triggerTimer), userInfo: nil, repeats: true)
         }
         
     }
     
     func crashTimer() {
         if crTimer == nil {
-            crTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(crashCheck), userInfo: nil, repeats: true)
+            crTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(crashCheck), userInfo: nil, repeats: true)
         }
     }
     
     @objc func triggerTimer() {
         counter += 1
+        print("timerTrigger \(counter)")
+            
+            containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
+            
+            containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
+            
+            block1.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 5, width: 70, height: 70)
+            
+            block2.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 200, width: 70, height: 70)
+            
+            block3.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY - 250, width: 70, height: 70)
+            
+            block4.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY - 400, width: 70, height: 70)
+            
         
-        containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
-        
-        containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
-        
-        block1.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 5, width: 70, height: 70)
-        
-        block2.frame = CGRect(x: containerView1.frame.minX + 105, y: containerView1.frame.minY + 250, width: 70, height: 70)
-        
-        block3.frame = CGRect(x: containerView1.frame.minX + 185, y: containerView1.frame.minY - 250, width: 70, height: 70)
-        
-        block4.frame = CGRect(x: containerView1.frame.minX + 265, y: containerView1.frame.minY + 5, width: 70, height: 70)
-        
-        
-        //        print("timerTrigger \(counter)")
-        
-        //            completion: { [self] isFinished in
-        //
-        //                containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
-        
-        //                containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: -1 * containerView2.frame.origin.y, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
-        //           }
     }
     
     @objc func actionSwipe(_sender: Any) {
@@ -158,10 +153,27 @@ class RoadDriverViewController: UIViewController {
     @objc func crashCheck() {
         if car.layer.presentation()!.frame.intersects(block1.layer.presentation()!.frame) {
             print("CRASH!")
-            
-            plTimer?.invalidate()
-            plTimer = nil
-            
+            block1.isHidden = true
+            lifeCounter += 1
+            deathLabel.text = "Death \(lifeCounter)"
+        } else if car.layer.presentation()!.frame.intersects(block2.layer.presentation()!.frame) {
+            print("CRASH!")
+            block2.isHidden = true
+            lifeCounter += 1
+            deathLabel.text = "Death \(lifeCounter)"
+        } else if car.layer.presentation()!.frame.intersects(block3.layer.presentation()!.frame) {
+            print("CRASH!")
+            block3.isHidden = true
+            lifeCounter += 1
+            deathLabel.text = "Death \(lifeCounter)"
+        } else if car.layer.presentation()!.frame.intersects(block4.layer.presentation()!.frame) {
+            print("CRASH!")
+            block4.isHidden = true
+            lifeCounter += 1
+            deathLabel.text = "Death \(lifeCounter)"
+        }
+        
+        if lifeCounter == 3 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let controller = storyboard.instantiateViewController(identifier: "GameOverViewControllerID") as? GameOverViewController {
                 controller.modalPresentationStyle = .overFullScreen
@@ -169,6 +181,7 @@ class RoadDriverViewController: UIViewController {
             }
         }
     }
+    
     
     @IBAction func actionStart(_ sender: Any) {
         playTimer()
