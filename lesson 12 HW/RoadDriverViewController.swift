@@ -129,6 +129,8 @@ class RoadDriverViewController: UIViewController {
         }
     }
     
+    
+    
     @objc func actionSwipe2(_sender: Any) {
         
         if carView.frame.minX > 10 {
