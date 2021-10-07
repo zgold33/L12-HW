@@ -44,7 +44,7 @@ class RoadDriverViewController: UIViewController {
         
         configRecognizer()
         configRecognizer2()
-        startPosition()
+//        startPosition()
         createCar()
         placeBlocks()
         crashTimer()
@@ -61,16 +61,39 @@ class RoadDriverViewController: UIViewController {
     func placeBlocks() {
         block1.image = blockPicture
         view.addSubview(block1)
+        block1.frame.size = CGSize(width: 70, height: 70)
+        block1.frame.origin = CGPoint(x: view.frame.width / 2 - 158, y: -80)
+        UIView.animate(withDuration: 4, delay: 0, options: [.repeat, .curveLinear]) {
+            self.block1.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        }
         
         block2.image = blockPicture
         view.addSubview(block2)
+        block2.frame.size = CGSize(width: 70, height: 70)
+        block2.frame.origin = CGPoint(x: view.frame.width / 2 - 75, y: -80)
+        UIView.animate(withDuration: 4, delay: 4, options: [.repeat, .curveLinear]) {
+            self.block2.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        }
         
         block3.image = blockPicture
         view.addSubview(block3)
+        block3.frame.size = CGSize(width: 70, height: 70)
+        block3.frame.origin = CGPoint(x: view.frame.width / 2 + 86, y: -80)
+        UIView.animate(withDuration: 4, delay: 9, options: [.repeat, .curveLinear]) {
+            self.block3.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        }
         
         block4.image = blockPicture
         view.addSubview(block4)
+        block4.image = blockPicture
+        block4.frame.size = CGSize(width: 70, height: 70)
+        block4.frame.origin = CGPoint(x: view.frame.width / 2 + 6, y: -80)
+        UIView.animate(withDuration: 4, delay: 13, options: [.repeat, .curveLinear]) {
+            self.block4.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        }
     }
+    
+    
     
     func move(direction: Direction2) {
         switch direction {
@@ -97,18 +120,17 @@ class RoadDriverViewController: UIViewController {
         recognizer.direction = .left
     }
     
-    func startPosition() {
-        containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
-        
-        containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: 1 - containerView2.frame.height, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
-    }
+//    func startPosition() {
+//        containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
+//
+//        containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: 1 - containerView2.frame.height, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
+//    }
     
     func playTimer() {
         
         if plTimer == nil {
-            plTimer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(triggerTimer), userInfo: nil, repeats: true)
+            plTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(animateRoad), userInfo: nil, repeats: true)
         }
-        
     }
     
     func crashTimer() {
@@ -117,21 +139,48 @@ class RoadDriverViewController: UIViewController {
         }
     }
     
-    @objc func triggerTimer() {
+    @objc func animateRoad() {
         counter += 1
         print("timerTrigger \(counter)")
+        
+        UIView.animate(withDuration: 3, delay: 0, options: [.repeat, .curveLinear]) {
+            self.containerView1.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        }
+        UIView.animate(withDuration: 3, delay: 3, options: [.repeat, .curveLinear]) {
+            self.containerView2.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        }
+        
+        
             
-            containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
-            
-            containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
-            
-            block1.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 5, width: 70, height: 70)
-            
-            block2.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 200, width: 70, height: 70)
-            
-            block3.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY - 250, width: 70, height: 70)
-            
-            block4.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY - 400, width: 70, height: 70)
+//            containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
+//
+//            containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
+//
+//            block1.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 5, width: 70, height: 70)
+//
+//            block2.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY + 200, width: 70, height: 70)
+//
+//            block3.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY - 250, width: 70, height: 70)
+//
+//            block4.frame = CGRect(x: containerView1.frame.minX + 25, y: containerView1.frame.minY - 400, width: 70, height: 70)
+        
+        
+        
+//        UIImageView.animate(withDuration: 1, delay: 1, options: .curveLinear, animations: { [self] in
+//            containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
+//
+//            containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
+//        }, completion: {[self] isFinish in
+//
+//            containerView1.frame = CGRect(x: containerView1.frame.origin.x, y: containerView1.frame.origin.y, width: containerView1.frame.size.width, height: containerView1.frame.size.height)
+//
+//            containerView2.frame = CGRect(x: containerView1.frame.origin.x, y: 1 - containerView2.frame.height, width: containerView2.frame.size.width, height: containerView2.frame.size.height)
+//
+//            containerView1.frame = CGRect(x: containerView1.frame.minX, y: containerView1.frame.minY + 5, width: containerView1.frame.width, height: containerView1.frame.height)
+//
+//            containerView2.frame = CGRect(x: containerView1.frame.minX, y: containerView2.frame.minY + 5, width: containerView2.frame.width, height: containerView2.frame.height)
+//
+//        })
             
         
     }
@@ -153,22 +202,22 @@ class RoadDriverViewController: UIViewController {
     @objc func crashCheck() {
         if car.layer.presentation()!.frame.intersects(block1.layer.presentation()!.frame) {
             print("CRASH!")
-            block1.isHidden = true
+            block1.removeFromSuperview()
             lifeCounter += 1
             deathLabel.text = "Death \(lifeCounter)"
         } else if car.layer.presentation()!.frame.intersects(block2.layer.presentation()!.frame) {
             print("CRASH!")
-            block2.isHidden = true
+            block2.removeFromSuperview()
             lifeCounter += 1
             deathLabel.text = "Death \(lifeCounter)"
         } else if car.layer.presentation()!.frame.intersects(block3.layer.presentation()!.frame) {
             print("CRASH!")
-            block3.isHidden = true
+            block3.removeFromSuperview()
             lifeCounter += 1
             deathLabel.text = "Death \(lifeCounter)"
         } else if car.layer.presentation()!.frame.intersects(block4.layer.presentation()!.frame) {
             print("CRASH!")
-            block4.isHidden = true
+            block4.removeFromSuperview()
             lifeCounter += 1
             deathLabel.text = "Death \(lifeCounter)"
         }
